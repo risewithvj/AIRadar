@@ -1,0 +1,47 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#1b2433"/>
+      <stop offset="100%" stop-color="#0c1018"/>
+    </radialGradient>
+    <linearGradient id="sweep" x1="64" y1="64" x2="64" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4DB0F4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#4DB0F4"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5EC2FF"/>
+      <stop offset="100%" stop-color="#1D9BF0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- backdrop -->
+  <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#bg)"/>
+
+  <!-- radar rings -->
+  <circle cx="64" cy="64" r="46" stroke="#3A85FF" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="64" cy="64" r="32" stroke="#3A85FF" stroke-opacity="0.22" stroke-width="2"/>
+  <circle cx="64" cy="64" r="18" stroke="#3A85FF" stroke-opacity="0.18" stroke-width="2"/>
+
+  <!-- sweep wedge -->
+  <path d="M64 64 L64 16 A48 48 0 0 1 108 56 Z" fill="url(#sweep)" opacity="0.45"/>
+  <line x1="64" y1="64" x2="64" y2="14" stroke="#5EC2FF" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- AI chip core -->
+  <rect x="50" y="50" width="28" height="28" rx="7" fill="url(#chip)"/>
+  <rect x="58" y="58" width="12" height="12" rx="3" fill="#0c1018" fill-opacity="0.85"/>
+  <!-- chip pins -->
+  <g stroke="#5EC2FF" stroke-width="2.5" stroke-linecap="round">
+    <line x1="56" y1="50" x2="56" y2="44"/>
+    <line x1="64" y1="50" x2="64" y2="44"/>
+    <line x1="72" y1="50" x2="72" y2="44"/>
+    <line x1="56" y1="78" x2="56" y2="84"/>
+    <line x1="64" y1="78" x2="64" y2="84"/>
+    <line x1="72" y1="78" x2="72" y2="84"/>
+    <line x1="50" y1="56" x2="44" y2="56"/>
+    <line x1="50" y1="64" x2="44" y2="64"/>
+    <line x1="50" y1="72" x2="44" y2="72"/>
+    <line x1="78" y1="56" x2="84" y2="56"/>
+    <line x1="78" y1="64" x2="84" y2="64"/>
+    <line x1="78" y1="72" x2="84" y2="72"/>
+  </g>
+</svg>

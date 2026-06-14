@@ -32,6 +32,8 @@ that returns a normalized object (`{ source, session, weekly, tokensDelta, … }
 ✅ **Commit these** (the editable master):
 ```
 extension/            (all source: manifest, background, content, overlay, platforms, popup, storage, tokenizer, vendor, injected, icons)
+manifest.firefox.json (Firefox/Gecko manifest variant)
+docs/                 (README screenshots)
 README.md  PRIVACY.md  LICENSE  NOTICE  CREDITS.md
 INSTALL.md  BROWSERS.md  CONTRIBUTING.md
 build.sh

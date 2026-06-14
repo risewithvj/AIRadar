@@ -53,11 +53,27 @@ Open the generated Xcode project, run it, then enable the extension in Safari �
 
 ## 3. Build distributable zips
 
+### Windows (PowerShell) — the simple way
+```powershell
+# Chromium package (Chrome/Edge/Brave/Opera/Vivaldi/Arc/…) — manifest is at the zip root
+Compress-Archive -Path .\extension\* -DestinationPath .\AIRadar-chromium.zip -Force
+
+# Firefox package (Firefox/Zen/Floorp/LibreWolf/Waterfox/…) — swaps in the Firefox manifest
+Copy-Item .\extension .\_ff -Recurse -Force
+Copy-Item .\manifest.firefox.json .\_ff\manifest.json -Force
+Compress-Archive -Path .\_ff\* -DestinationPath .\AIRadar-firefox.zip -Force
+Remove-Item .\_ff -Recurse -Force
+```
+
+### macOS / Linux / Git Bash — the script
 ```bash
 ./build.sh
-# → dist/airadar-extension-v2.2.0.zip   (the loadable/uploadable package)
-# → dist/airadar-source-v2.2.0.zip      (full repo source snapshot)
+# → dist/airadar-chromium-v<version>.zip   (Chrome, Edge, Brave, Opera, Vivaldi, Arc, …)
+# → dist/airadar-firefox-v<version>.zip    (Firefox, Zen, Floorp, LibreWolf, Waterfox, …)
+# → dist/airadar-source-v<version>.zip     (full editable source snapshot)
 ```
+
+> **Two packages, because** Chrome wants `background.service_worker` and Firefox wants `background.scripts` — putting both in one manifest makes Chrome show a warning. The default `extension/manifest.json` is the **Chromium** one (warning-free); `manifest.firefox.json` is swapped in for the Firefox build.
 
 Use the **extension** zip to upload to stores or share for sideloading. Use the **source** zip to archive/share the editable master.
 

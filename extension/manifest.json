@@ -1,0 +1,97 @@
+{
+  "manifest_version": 3,
+  "name": "AIRadar",
+  "version": "2.2.2",
+  "description": "Real-time AI usage, token estimates and reset timers for Claude, ChatGPT, Gemini, Copilot, Grok, Perplexity, Meta AI and DeepSeek. 100% local. By Rise With VJ.",
+  "author": "Vijaya Kumar L (Rise With VJ)",
+  "homepage_url": "https://github.com/risewithvj/AIRadar",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "AIRadar — by Rise With VJ"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://claude.ai/*",
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://grok.com/*",
+        "https://x.com/*",
+        "https://perplexity.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://meta.ai/*",
+        "https://chat.deepseek.com/*"
+      ],
+      "js": [
+        "storage/store.js",
+        "tokenizer/estimator.js",
+        "vendor/o200k_base.js",
+        "tokenizer/tiktoken.js",
+        "platforms/index.js",
+        "platforms/claude.js",
+        "platforms/chatgpt.js",
+        "platforms/gemini.js",
+        "platforms/copilot.js",
+        "platforms/grok.js",
+        "platforms/perplexity.js",
+        "platforms/metaai.js",
+        "platforms/deepseek.js",
+        "overlay/themes.js",
+        "overlay/hud.js",
+        "overlay/inlinebar.js",
+        "content/main.js"
+      ],
+      "css": ["overlay/hud.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected/bridge.js", "vendor/o200k_base.js"],
+      "matches": [
+        "https://claude.ai/*",
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://copilot.microsoft.com/*",
+        "https://grok.com/*",
+        "https://x.com/*",
+        "https://perplexity.ai/*",
+        "https://www.perplexity.ai/*",
+        "https://meta.ai/*",
+        "https://chat.deepseek.com/*"
+      ]
+    }
+  ],
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://claude.ai/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://grok.com/*",
+    "https://x.com/*",
+    "https://perplexity.ai/*",
+    "https://www.perplexity.ai/*",
+    "https://meta.ai/*",
+    "https://chat.deepseek.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self'"
+  }
+}

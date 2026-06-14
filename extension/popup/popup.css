@@ -1,0 +1,195 @@
+/*!
+ * ============================================================================
+ *  AIRadar — Universal AI usage, token & reset-timer tracker
+ *  Claude · ChatGPT · Gemini · Copilot · Grok · Perplexity · Meta AI · DeepSeek
+ * ----------------------------------------------------------------------------
+ *  Author & Developer : Vijaya Kumar L  (Rise With VJ)
+ *  GitHub             : https://github.com/risewithvj
+ *  Project            : https://github.com/risewithvj/AIRadar
+ *  LinkedIn           : https://www.linkedin.com/in/vijayakumarl/
+ *  Email              : risewithvj@gmail.com
+ * ----------------------------------------------------------------------------
+ *  Copyright (c) 2026 Vijaya Kumar L (Rise With VJ). All rights reserved.
+ *  Source-available under the AIRadar License — see LICENSE. Attribution to the
+ *  original author MUST be retained in all copies and derivative works.
+ *  AIRadar is 100% local: it collects no data and contacts no third-party server.
+ * ============================================================================
+ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  width: 320px;
+  min-height: 300px;
+  background: #0E0E12;
+  color: #F0EFF8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+}
+
+.popup-root { display: flex; flex-direction: column; min-height: 200px; --popup-accent: #888; }
+
+/* Header — mirrors the HUD header */
+.popup-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 15px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.popup-header-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.popup-header-right { display: flex; align-items: center; gap: 9px; }
+.popup-logo-svg { color: var(--popup-accent); flex-shrink: 0; }
+.popup-title { font-size: 13.5px; font-weight: 600; letter-spacing: 0.01em; color: rgba(255,255,255,0.92); }
+.popup-platform-chip {
+  display: inline-flex; align-items: center; height: 18px; padding: 0 8px;
+  border-radius: 999px; background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.popup-platform-chip[hidden] { display: none; }
+.popup-live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80; box-shadow: 0 0 8px rgba(74,222,128,0.7);
+  animation: popup-pulse 1.8s ease-in-out infinite;
+}
+.popup-live-dot[hidden] { display: none; }
+@keyframes popup-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.popup-version { font-size: 10px; opacity: 0.35; }
+
+/* Platform cards */
+.popup-platforms { padding: 0; display: flex; flex-direction: column; }
+
+/* Empty state */
+.popup-empty {
+  padding: 28px 16px; text-align: center;
+}
+.popup-empty-icon { color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+.popup-empty-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.popup-empty-sub { font-size: 11px; opacity: 0.45; margin-bottom: 14px; }
+.popup-supported-list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.popup-supported-chip {
+  font-size: 10px; padding: 3px 8px; border-radius: 999px;
+  border: 1px solid; opacity: 0.8;
+}
+
+/* Single platform view — mirrors the HUD panel body */
+.popup-single-platform { padding: 13px 14px 8px; display: flex; flex-direction: column; gap: 11px; }
+
+.popup-rings-row { display: flex; gap: 9px; }
+.popup-ring-card {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 9px;
+  padding: 14px 8px 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.popup-ring-wrap { position: relative; width: 72px; height: 72px; }
+.popup-ring-svg { width: 72px; height: 72px; overflow: visible; }
+.popup-ring-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.popup-ring-pct { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; color: #fff; }
+.popup-ring-label {
+  font-size: 9.5px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.09em; opacity: 0.45;
+}
+
+.popup-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.popup-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 13px 10px; text-align: center;
+}
+.popup-stat-val { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.popup-stat-lbl { font-size: 8.5px; font-weight: 600; opacity: 0.4; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
+
+.popup-timers { display: flex; flex-direction: column; gap: 7px; }
+.popup-timer-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 13px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+.popup-timer-lbl { font-size: 11.5px; opacity: 0.5; }
+.popup-timer-val { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.popup-query-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 22px 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.popup-query-num { font-size: 38px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+.popup-query-lbl { font-size: 11px; opacity: 0.45; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Footer buttons */
+.popup-footer {
+  display: flex; gap: 8px; padding: 10px 12px 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: auto;
+}
+.popup-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  gap: 5px; padding: 8px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: background 0.15s, opacity 0.15s;
+  font-family: inherit;
+}
+.popup-btn:hover { opacity: 0.85; }
+.popup-btn:active { transform: scale(0.97); }
+
+.popup-btn-primary {
+  background: rgba(255,255,255,0.1);
+  color: #F0EFF8;
+}
+.popup-btn-primary:hover { background: rgba(255,255,255,0.16); }
+
+.popup-btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: rgba(240,239,248,0.7);
+}
+
+.popup-btn-danger {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+.popup-btn-danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+/* Settings view */
+.settings-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 16px; }
+.settings-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.settings-section { display: flex; flex-direction: column; gap: 4px; }
+.settings-label { font-size: 12px; font-weight: 500; color: rgba(240,239,248,0.85); }
+.settings-hint { font-size: 11px; color: rgba(240,239,248,0.45); line-height: 1.5; }
+.settings-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip {
+  font-size: 11px; padding: 3px 9px; border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── Credits / About (by Rise With VJ) ─────────────────────────────── */
+.popup-credit {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 0 12px 12px;
+  font-size: 10px; color: rgba(255,255,255,0.35);
+}
+.popup-credit a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.popup-credit a:hover { color: var(--popup-accent, #fff); text-decoration: underline; }
+.popup-credit-sep { opacity: 0.5; }
+
+.settings-about {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 12px 13px;
+}
+.settings-about-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.92); }
+.settings-about-role { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.settings-about-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; }
+.settings-about-links a {
+  font-size: 11px; font-weight: 500; color: #5BA3E0; text-decoration: none;
+}
+.settings-about-links a:hover { text-decoration: underline; }

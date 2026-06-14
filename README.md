@@ -14,7 +14,7 @@
 **A floating HUD + toolbar popup that shows your session usage %, weekly usage %, token estimates, live burn rate and reset countdowns — right on the page, 100% locally.**
 
 <!-- 👇 Paste your release / download link in the href below -->
-### [⬇️ &nbsp; Download AIRadar](REPLACE_WITH_YOUR_DOWNLOAD_LINK)
+### [⬇️ &nbsp; Download AIRadar](https://sites.google.com/view/risewithvj/home/airadar)
 
 [Download](#-download) · [Install](#-install) · [Supported AIs](#-supported-ai-platforms) · [Browsers](#-browser-support) · [Build from source](#-build-from-source) · [Privacy](#-privacy) · [License](#-license)
 
@@ -24,7 +24,7 @@
 
 ## ⬇️ Download
 
-> **▶ Latest build:** **[Download AIRadar](REPLACE_WITH_YOUR_DOWNLOAD_LINK)**
+> **▶ Latest build:** **[Download AIRadar](https://sites.google.com/view/risewithvj/home/airadar)**
 > &nbsp;&nbsp;_← replace `REPLACE_WITH_YOUR_DOWNLOAD_LINK` (here and in the header) with your release/zip URL._
 
 | Source | Link | Notes |

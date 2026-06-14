@@ -10,6 +10,9 @@
 ![Privacy](https://img.shields.io/badge/data%20collected-none-2ea44f?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-Source--Available-D97B45?style=for-the-badge)
 [![jsDelivr](https://img.shields.io/jsdelivr/gh/hm/risewithvj/AIRadar?style=for-the-badge&color=E84D3D&label=jsDelivr%20hits)](https://www.jsdelivr.com/package/gh/risewithvj/AIRadar)
+[![Repo Views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Frisewithvj%2FAIRadar&label=Repo%20Views&labelColor=%23003060&countColor=%230060B0&style=for-the-badge)](https://github.com/risewithvj/AIRadar)
+[![Stars](https://img.shields.io/github/stars/risewithvj/AIRadar?style=for-the-badge&color=0060B0&labelColor=003060)](https://github.com/risewithvj/AIRadar/stargazers)
+[![Forks](https://img.shields.io/github/forks/risewithvj/AIRadar?style=for-the-badge&color=0060B0&labelColor=003060)](https://github.com/risewithvj/AIRadar/network/members)
 
 **A floating HUD + toolbar popup that shows your session usage %, weekly usage %, token estimates, live burn rate and reset countdowns — right on the page, 100% locally.**
 

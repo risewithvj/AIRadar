@@ -1,0 +1,29 @@
+# ── Build output (attach to GitHub Releases instead of committing) ──
+dist/
+*.zip
+
+# ── Packed builds & SIGNING KEYS — never commit private keys ──
+*.crx
+*.pem
+*.p12
+web-ext-artifacts/
+
+# ── Dependencies (only present if you use the optional minifier) ──
+node_modules/
+package-lock.json
+
+# ── Local secrets / config ──
+.env
+.env.*
+*.local
+secrets.*
+
+# ── Editor / OS cruft ──
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+*~

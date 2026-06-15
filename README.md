@@ -28,7 +28,6 @@
 ## ⬇️ Download
 
 > **▶ Latest build:** **[Download AIRadar](https://sites.google.com/view/risewithvj/home/airadar)**
-> &nbsp;&nbsp;_← replace `REPLACE_WITH_YOUR_DOWNLOAD_LINK` (here and in the header) with your release/zip URL._
 
 | Source | Link | Notes |
 |---|---|---|
